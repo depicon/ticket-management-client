@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import type { Ticket } from '../../types/tickets';
 import { STATUS_COLORS, PRIORITY_COLORS } from '../../utils/constants';
 import { Button } from '../common/Button';
-import { Modal } from '../common/Modal';
+// import { Modal } from '../common/Modal';
 
 interface TicketListProps {
   tickets: Ticket[];
@@ -18,14 +18,14 @@ export const TicketList: React.FC<TicketListProps> = ({
   onStatusChange,
   loading,
 }) => {
-  const [deleteId, setDeleteId] = useState<number | null>(null);
+  // const [deleteId, setDeleteId] = useState<number | null>(null);
 
-  const handleDelete = async () => {
-    if (deleteId) {
-    //   await onDelete(deleteId);
-      setDeleteId(null);
-    }
-  };
+  // const handleDelete = async () => {
+  //   if (deleteId) {
+  //   //   await onDelete(deleteId);
+  //     setDeleteId(null);
+  //   }
+  // };
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {

@@ -1,10 +1,13 @@
 import axios from 'axios';
 import type { Ticket, CreateTicketDTO, UpdateTicketDTO } from '../types/tickets';
+import { useEnv } from '../hooks/useEnv';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+// const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+
+const env = useEnv();
 
 const api = axios.create({
-  baseURL: API_URL,
+  baseURL: env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json',
   },

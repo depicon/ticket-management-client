@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import type { CreateTicketDTO, TicketPriority } from '../../types/tickets';
+// import type { CreateTicketDTO, TicketPriority } from '../../types/tickets';
+import type { CreateTicketDTO } from '../../types/tickets';
 import { PRIORITY_OPTIONS } from '../../utils/constants';
 import { Input } from '../common/Input';
 import { Select } from '../common/Select';
