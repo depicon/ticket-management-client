@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# Ticket Management Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend for the Ticket Management application, built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Technology Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Framework:** [React](https://react.dev/)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **HTTP Client:** [Axios](https://axios-http.com/)
+- **Routing:** [React Router](https://reactrouter.com/)
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The project is a standard Vite-React application with the following key directories:
 
-## Expanding the ESLint configuration
+-   `src/`: Contains all the source code, including components, pages, and assets.
+-   `public/`: Contains static assets that are not processed by the build tool.
+-   `dist/`: The output directory for the production build.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Configuration
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Vite Configuration (`vite.config.ts`)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+-   **Development Server Port:** `5173`
+-   **API Proxy:** Requests to `/api` are proxied to `http://localhost:3000` to avoid CORS issues during development.
+-   **Path Alias:** The `@` alias is configured to point to the `src` directory for cleaner import paths.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Docker
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The project includes Docker configurations for both development and production environments:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+-   `Dockerfile`: Sets up a multi-stage build using Nginx to serve the production-ready static files.
+-   `Dockerfile.dev`: Configures the development environment.
+-   `entrypoint.sh`: A script to substitute environment variables in the built files at runtime.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Getting Started
+
+### Prerequisites
+
+-   Node.js (v20.x or higher)
+-   npm
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/depicon/ticket-management-client.git
+    cd ticket-management-client
+    ```
+
+2.  Install the dependencies:
+    ```bash
+    npm install
+    ```
+
+### Available Scripts
+
+-   **`npm run dev`**: Starts the development server with Hot Module Replacement (HMR). The application will be available at `http://localhost:5173`.
+-   **`npm run build`**: Compiles the TypeScript code and builds the application for production in the `dist` folder.
+-   **`npm run lint`**: Lints the codebase using ESLint.
+-   **`npm run preview`**: Serves the production build locally to preview it.
