@@ -7,7 +7,7 @@ import { useEnv } from '../hooks/useEnv';
 const env = useEnv();
 
 const api = axios.create({
-  baseURL: env.VITE_API_URL,
+  baseURL: env.VITE_API_URL || '/api',
   headers: {
     'Content-Type': 'application/json',
   },
